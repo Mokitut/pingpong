@@ -31,6 +31,12 @@ class Player(GameSprite):
            self.rect.y += self.speed
 
 
+ball=GameSprite('ball.png',200,200,4,50,50)
+
+rocket1=Player('1.png',30,200,4,50,150)
+
+rocket2=Player('2.png',520,200,4,50,150)
+
 back = (200, 255, 255)
 win_width = 600
 win_height = 500
@@ -43,9 +49,14 @@ clock = time.Clock()
 FPS = 60
 
 while game:
+    window.fill(back)
     for e in event.get():
         if e.type == QUIT:
             game = False
-
+    rocket1.update_r()
+    rocket2.update_l()
+    ball.reset()
+    rocket1.reset()
+    rocket2.reset()
     display.update()
     clock.tick(FPS) 
