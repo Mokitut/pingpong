@@ -1,5 +1,13 @@
 from pygame import *
 
+speed_x=3
+speed_y=3
+
+
+
+
+
+
 
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, player_speed, wight, height):
@@ -53,6 +61,18 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+    ball.rect.x += speed_x
+    ball.rect.y += speed_y
+
+
+    if ball.rect.y > win_height-50 or ball.rect.y < 0:
+        speed_y *= -1
+
+    if ball.rect.x > win_width-50 or ball.rect.x < 0:
+        speed_x *= -1
+
+    if sprite.collide_rect(rocket1,ball)or sprite.collide_rect(rocket2,ball):
+        speed_x *= -1
     rocket1.update_r()
     rocket2.update_l()
     ball.reset()
@@ -60,3 +80,4 @@ while game:
     rocket2.reset()
     display.update()
     clock.tick(FPS) 
+ 
