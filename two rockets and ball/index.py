@@ -15,7 +15,7 @@ class GameSprite(sprite.Sprite):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
 
-
+# test commentt
 class Player(GameSprite):
    def update_r(self):
        keys = key.get_pressed()
